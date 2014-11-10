@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/steffen/Development/Ruby/sample_app'
-let g:netrw_dirhist_2='/home/steffen/Development/Web/HIFlyFilms'
-let g:netrw_dirhist_3='/home/steffen/Development/Web/HIFlyFilms/public'
-let g:netrw_dirhist_4='/home/steffen/Development/Web/HIFlyFilms'
-let g:netrw_dirhist_5='/home/steffen/.config/i3status'
-let g:netrw_dirhist_6='/home/steffen/Development/Rust/marriage'
-let g:netrw_dirhist_7='/home/steffen/Development/Rust/marriage/src'
