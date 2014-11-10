@@ -1,0 +1,49 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "name": "steffen@larch:~",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^URxvt$",
+       "instance": "^left$"
+       // "title": "^steffen\\@larch\\:\\~$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    // splitv split container with 2 children
+    "border": "none",
+    "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "name": "ranger",
+            "swallows": [
+               {
+               "class": "^URxvt$",
+               "instance": "^topright$",
+               "title": "^ranger$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "name": "ncmpcpp",
+            "swallows": [
+               {
+               "class": "^URxvt$",
+               "instance": "^bottomright$",
+               "title": "^ncmpcpp*"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

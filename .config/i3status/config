@@ -1,0 +1,83 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 1
+        color_good = "#859900"
+        color_degraded = "#cb4b16"
+        color_bad = "#dc322f"
+}
+
+order += "cpu_temperature 2"
+# order += "cpu_temperature 3"
+order += "wireless wlp1s0"
+order += "ethernet enp2s0"
+order += "volume master"
+order += "battery 1"
+# order += "load"
+order += "time"
+order += "tztime local"
+
+wireless wlp1s0 {
+        format_up = "%ip"
+        format_down = "--"
+}
+
+ethernet enp2s0 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "%ip"
+        format_down = "--"
+}
+
+battery 1 {
+        low_threshold = 14
+        threshold_type = percentage
+        format = "%percentage"
+}
+
+run_watch DHCP {
+        pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPN {
+        pidfile = "/var/run/vpnc/pid"
+}
+
+time {
+        format = "%a, %d %b %y"
+}
+
+tztime local {
+        format = "%H:%M"
+}
+
+load {
+        format = "%1min"
+}
+
+disk "/home" {
+        format = "%avail"
+}
+
+cpu_temperature 2 {
+        format = "%degrees"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input"
+}
+
+cpu_temperature 3 {
+        format = "C2: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp3_input"
+}
+
+volume master {
+        format = "%volume"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
