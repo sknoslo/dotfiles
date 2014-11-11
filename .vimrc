@@ -11,6 +11,8 @@ Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on
@@ -66,4 +68,3 @@ nnoremap <leader>s :mksession<CR>
 
 map <C-h> :tabp<CR>
 map <C-l> :tabn<CR>
-map <C-n> :tabnew<CR>
