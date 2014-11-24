@@ -20,6 +20,13 @@ call vundle#end()
 filetype plugin indent on
 set autoindent " insert new line at same indent level
 
+set number " turn on regular line number
+set relativenumber " turn on relative numbers
+
+set laststatus=2
+set statusline=\ %t\ %y\ %=%([%l,%v][%p%%]\ %)
+hi StatusLine ctermfg=8 ctermbg=14
+
 syntax enable "enable syntax processing
 
 set shiftwidth=2 "width of indent
@@ -42,11 +49,13 @@ set lazyredraw " dont redraw if you don't have to
 
 set showmatch " highlight matching [{()}]
 
+set backspace=2
+
 """ SEARCH SETTINGS
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
 
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader><space> :let @/ = ""<CR>
 
 """ CODE FOLDING
 set foldenable " enable folding
@@ -69,13 +78,24 @@ nnoremap <leader>s :mksession<CR>
 map <C-h> :tabp<CR>
 map <C-l> :tabn<CR>
 
-" FUNCTIONS
-
-function! NumberToggle()
-  if(&relativenumber == 1)
+let g:cycle=0
+function! CycleNumberView()
+  let g:cycle+=1
+  if g:cycle > 3
+    let g:cycle = 0
+  end
+  if g:cycle == 0
     set number
-  else
     set relativenumber
+  elseif g:cycle == 1
+    set number
+    set norelativenumber
+  elseif g:cycle == 2
+    set nonumber
+    set relativenumber
+  elseif g:cycle == 3
+    set nonumber
+    set norelativenumber
   endif
-endfunc
-nnoremap <C-m> :call NumberToggle()<CR>
+endfunction
+nnoremap <S-n> :call CycleNumberView()<CR>
