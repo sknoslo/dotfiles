@@ -14,13 +14,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'gregsexton/MatchTag'
 
 call vundle#end()
 filetype plugin indent on
 set autoindent " insert new line at same indent level
-
-" set background=dark
-" colorscheme solarized
 
 syntax enable "enable syntax processing
 
@@ -28,10 +26,11 @@ set shiftwidth=2 "width of indent
 set tabstop=2 "size of tabs
 set expandtab "expand tabs into spaces
 
-" set number "show line numbers
 set showcmd "show command in bottom bar
 
 set cursorline "highlight current line
+
+set so=10 "cursor 10 lines from edge
 
 set t_Co=256
 
@@ -69,3 +68,14 @@ nnoremap <leader>s :mksession<CR>
 
 map <C-h> :tabp<CR>
 map <C-l> :tabn<CR>
+
+" FUNCTIONS
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-m> :call NumberToggle()<CR>
