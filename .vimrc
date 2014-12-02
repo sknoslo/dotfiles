@@ -51,23 +51,19 @@ set showmatch " highlight matching [{()}]
 
 set backspace=2
 
+""" NERDTree settings
+let NERDTreeShowHidden=1
+
 """ SEARCH SETTINGS
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
 
-nnoremap <leader><space> :let @/ = ""<CR>
-
-""" CODE FOLDING
-set foldenable " enable folding
-set foldlevelstart=10 " open most by default
-set foldnestmax=10 " 10 nested folds max
-
-" set space to (un)fold
-nnoremap <space> za
-set foldmethod=indent " fold based on indent level
 
 """ KEYBINDINGS
 let mapleader="," " leader is a comma
+
+" clear previous search
+nnoremap <leader><space> :let @/ = ""<CR>
 
 " toggle gundo (undo tree viewer)
 nnoremap <leader>u :GundoToggle<CR>
