@@ -16,6 +16,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'gregsexton/MatchTag'
 Plugin 'tpope/vim-surround'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
 
 call vundle#end()
 filetype plugin indent on
@@ -51,6 +52,9 @@ set lazyredraw " dont redraw if you don't have to
 set showmatch " highlight matching [{()}]
 
 set backspace=2
+
+""" Manual filetype settings
+au BufNewFile,BufRead *.ejs set filetype=html
 
 """ NERDTree settings
 let NERDTreeShowHidden=1
