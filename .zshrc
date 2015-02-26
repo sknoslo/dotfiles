@@ -1,13 +1,14 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory autocd extendedglob nomatch notify
+setopt appendhistory autocd extendedglob nomatch notify prompt_subst
 unsetopt beep
 bindkey -v
 
 precmd() {
   RPROMPT=""
 }
+
 zle-keymap-select() {
   RPROMPT=""
   [[ $KEYMAP = vicmd ]] && RPROMPT="(CMD)"
@@ -27,7 +28,29 @@ export EDITOR=vim
 autoload -U compinit promptinit colors
 compinit
 promptinit
-colors
+
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+  colors
+fi
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+  eval C$color[1,1]="%{$terminfo[bold]$fg[${(L)color}]%}"
+  eval CL$color[1,1]="%{$fg[${(L)color}]%}"
+done
+RC="%{$reset_color%}"
+
+GO="%{$CC%}[%{$RC%}"
+GC="%{$CC%}]%{$RC%}"
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' actionformats '[%b](%a)'
+zstyle ':vcs_info:*' formats "%{$GO%}%{$CW%}%b%{$RC%}%{$GC%}%{$CLR%}%u%{$CLG%}%c%{$RC%}"
+zstyle ':vcs_info:*' branchformat '%b'
+zstyle ':vcs_info:*' unstagedstr '+'
+zstyle ':vcs_info:*' stagedstr '*'
+zstyle ':vcs_info:*' check-for-changes true
+
+precmd() { vcs_info }
  
-PROMPT="%{$fg_bold[blue]%}%~
-%{$fg_bold[green]%}>: %{$reset_color%}"
+PROMPT='%{$CB%}%(4~,../,)%3~ ${vcs_info_msg_0_}
+%{$CG%}>: %{$RC%}'
