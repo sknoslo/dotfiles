@@ -1,3 +1,5 @@
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
