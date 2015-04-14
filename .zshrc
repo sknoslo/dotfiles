@@ -43,7 +43,7 @@ GC="%{$CC%}]%{$RC%}"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' actionformats '[%b](%a)'
+zstyle ':vcs_info:*' actionformats "%{$GO%}%{$CW%}%b%{$RC%}%{$GC%}%{$CLR%}%u%{$CLG%}%c%{$RC%}(%a)"
 zstyle ':vcs_info:*' formats "%{$GO%}%{$CW%}%b%{$RC%}%{$GC%}%{$CLR%}%u%{$CLG%}%c%{$RC%}"
 zstyle ':vcs_info:*' branchformat '%b'
 zstyle ':vcs_info:*' unstagedstr '+'
